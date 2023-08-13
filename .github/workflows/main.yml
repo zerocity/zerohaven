@@ -41,5 +41,17 @@ jobs:
       - name: Build
         run: pnpm build:firefox
 
-      - name: Zip
+      - name: zip
         run: pnpm zip:firefox
+
+      - name: "Upload Artifact extension"
+        uses: actions/upload-artifact@v3
+        with:
+          name: zerohaven.xpi
+          path: .output/zerohaven-*-firefox.zip
+
+      - name: "Upload Artifact source"
+        uses: actions/upload-artifact@v3
+        with:
+          name: zerohaven-latest-sources.zip
+          path: .output/zerohaven-*-sources.zip
