@@ -1,12 +1,10 @@
 # Controls when the action will run.
 on:
-  workflow_dispatch:
-  push:
-    branches-ignore:
-      - 'main' # don't run on main
+  - push
+  - pull_request
 
 jobs:
-  unit-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,12 +14,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         with:
-          version: 7
+          version: 8
           run_install: false
 
       - name: Get pnpm store directory
@@ -40,9 +38,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build 
+      - name: Build
         run: pnpm build:firefox
 
       - name: Zip
         run: pnpm zip:firefox
-        
