@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    environment: build
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -43,6 +43,14 @@ jobs:
 
       - name: zip
         run: pnpm zip:firefox
+
+      - name: Publish
+        uses: trmcnvn/firefox-addon@v1
+        with:
+          xpi: .output/zerohaven-*-firefox.zip
+          manifest: .output/firefox-mv2/manifest.json
+          api-key: ${{ secrets.FIREFOX_API_KEY }}
+          api-secret: ${{ secrets.FIREFOX_API_SECRET }}
 
       - name: "Upload Artifact extension"
         uses: actions/upload-artifact@v3

@@ -7,6 +7,13 @@ export default defineConfig({
   manifest: {
     version: pkg.version,
     name: "zerohaven",
+    developer: {
+      name: "Philipp Bisson",
+      url: "https://github.com/zerocity/zerohaven",
+    },
+    description:
+      "Replace new tab page with a personal dashboard. The background can be customized.",
+    homepage_url: "https://www.zerocity.sh",
     applications: {
       gecko: {
         id: "zerohaven@zerocity.sh",
