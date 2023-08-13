@@ -47,7 +47,7 @@ jobs:
       - name: Publish
         uses: trmcnvn/firefox-addon@v1
         with:
-          xpi: .output/zerohaven-*-firefox.zip
+          xpi: .output/zerohaven-0.0.1-firefox.zip
           manifest: .output/firefox-mv2/manifest.json
           api-key: ${{ secrets.FIREFOX_API_KEY }}
           api-secret: ${{ secrets.FIREFOX_API_SECRET }}
