@@ -47,6 +47,9 @@ jobs:
       - name: zip
         run: pnpm zip:firefox
 
+      - name: Check for changeset
+        run: pnpm changeset status --since=main
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
@@ -55,7 +58,10 @@ jobs:
 
       - name: Get version
         id: get-version
-        run: echo "VERSION=$(pnpm pkg get version)" >> "$GITHUB_OUTPUT"
+        run: echo "VERSION=$(node --print 'require("./package.json").version' )" >> "$GITHUB_OUTPUT"
+
+      - name: Output path of artifact
+        run: echo ".output/zerohaven-${{steps.get-version.outputs.VERSION}}-firefox.zip"
 
       - name: Publish
         uses: trmcnvn/firefox-addon@v1
