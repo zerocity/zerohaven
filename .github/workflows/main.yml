@@ -8,6 +8,9 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -46,22 +49,14 @@ jobs:
       - name: Typecheck
         run: pnpm compile
 
-      - name: Build
-        run: pnpm build:firefox
-
-      - name: zip
-        run: pnpm zip:firefox
-
-      #  Dont work
-      #
-      # - name: Check for changeset
-      #   run: pnpm changeset status --since=main
-
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check for changeset
+        run: pnpm changeset status --since=main
 
       - name: Get version
         id: get-version
@@ -69,6 +64,12 @@ jobs:
 
       - name: Output path of artifact
         run: echo ".output/zerohaven-${{steps.get-version.outputs.VERSION}}-firefox.zip"
+
+      - name: Build
+        run: pnpm build:firefox
+
+      - name: zip
+        run: pnpm zip:firefox
 
       - name: Publish
         uses: trmcnvn/firefox-addon@v1
