@@ -9,12 +9,16 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 permissions:
-  contents: write
+  contents: read # for checkout
 
 jobs:
   build:
     runs-on: ubuntu-latest
     environment: build
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -49,14 +53,10 @@ jobs:
       - name: Typecheck
         run: pnpm compile
 
-      - name: Create Release Pull Request or Publish to npm
-        id: changesets
-        uses: changesets/action@v1
+      - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Check for changeset
-        run: pnpm changeset status --since=main
+        run: npx semantic-release
 
       - name: Get version
         id: get-version
@@ -73,7 +73,6 @@ jobs:
 
       - name: Publish
         uses: trmcnvn/firefox-addon@v1
-        if: steps.changesets.outputs.hasChangesets == 'false'
         with:
           xpi: .output/zerohaven-${{steps.get-version.outputs.VERSION}}-firefox.zip
           manifest: .output/firefox-mv2/manifest.json
