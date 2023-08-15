@@ -77,9 +77,10 @@ jobs:
 
       - name: Publish
         if: ${{ steps.release.outputs.release_created }}
-        uses: zerocity/firefox-addon@v0.0.3
+        uses: zerocity/firefox-addon@v0.0.4
         with:
           guid: zerohaven@zerocity.sh
+          license: "MIT"
           xpi_path: .output/zerohaven-${{steps.get-version.outputs.VERSION}}-firefox.zip
           src_path: .output/zerohaven-${{steps.get-version.outputs.VERSION}}-sources.zip
           api_key: ${{ secrets.FIREFOX_API_KEY }}
