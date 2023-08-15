@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/zerocity/zerohaven/compare/v1.0.3...v1.0.4) (2023-08-15)
+
+
+### Bug Fixes
+
+* add  license field ([d4e8c7e](https://github.com/zerocity/zerohaven/commit/d4e8c7e87aece1cae7fd855123d422e0c1cf24ed))
+
 ## [1.0.3](https://github.com/zerocity/zerohaven/compare/v1.0.2...v1.0.3) (2023-08-15)
 
 
