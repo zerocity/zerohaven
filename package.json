@@ -1,7 +1,7 @@
 {
   "name": "zerohaven",
   "description": "Web extension for set a background image on new tab",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "scripts": {
     "dev": "wxt",

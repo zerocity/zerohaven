@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.3](https://github.com/zerocity/zerohaven/compare/v1.0.2...v1.0.3) (2023-08-15)
+
+
+### Bug Fixes
+
+* Add License ([02cbb6b](https://github.com/zerocity/zerohaven/commit/02cbb6b6265599f6ec30368e2be172d502bb0ea8))
+* add lock ([9a0413d](https://github.com/zerocity/zerohaven/commit/9a0413d35535b2eb884b1ca45eae8bf3938d1179))
+* add missing import ([17fa595](https://github.com/zerocity/zerohaven/commit/17fa595186db58543adb94fbe060b46fc708e750))
+
 ## [1.0.2](https://github.com/zerocity/zerohaven/compare/v1.0.1...v1.0.2) (2023-08-15)
 
 
