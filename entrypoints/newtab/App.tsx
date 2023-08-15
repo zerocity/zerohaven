@@ -1,4 +1,5 @@
-import { Home, SettingPage } from "@@/pages";
+import { Page } from "@@/components/Page";
+import { Home } from "@@/pages";
 import {
   ChakraProvider,
   ColorModeScript,
@@ -9,7 +10,6 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import {
-  createBrowserRouter,
   createMemoryRouter,
   createRoutesFromElements,
   Route,
