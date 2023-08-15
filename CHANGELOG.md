@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/zerocity/zerohaven/compare/v1.0.0...v1.0.1) (2023-08-15)
+
+
+### Bug Fixes
+
+* Change action for publish ([14e7a10](https://github.com/zerocity/zerohaven/commit/14e7a10a0a896edeb82d5e7dfabf8cce87bc8a99))
+
 ## 1.0.0 (2023-08-15)
 
 
