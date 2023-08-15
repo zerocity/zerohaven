@@ -42,8 +42,8 @@ dependencies:
     specifier: ^6.15.0
     version: 6.15.0(react-dom@18.2.0)(react@18.2.0)
   zod:
-    specifier: ^3.21.4
-    version: 3.21.4
+    specifier: ^3.22.0
+    version: 3.22.0
 
 devDependencies:
   '@semantic-release/git':
@@ -62,8 +62,8 @@ devDependencies:
     specifier: ^5.1.6
     version: 5.1.6
   wxt:
-    specifier: ^0.3.1
-    version: 0.3.1(typescript@5.1.6)(webextension-polyfill@0.10.0)
+    specifier: ^0.3.2
+    version: 0.3.2(typescript@5.1.6)(webextension-polyfill@0.10.0)
 
 packages:
 
@@ -7320,8 +7320,8 @@ packages:
         optional: true
     dev: true
 
-  /wxt@0.3.1(typescript@5.1.6)(webextension-polyfill@0.10.0):
-    resolution: {integrity: sha512-HqOFklUNkHZlu9uI4DtPLKUVd0L1R17kVsbJAQbDZuSPbbvTAojTW1UozFTYvSmanYAXoM6yxa7vpZzOii8ZHg==}
+  /wxt@0.3.2(typescript@5.1.6)(webextension-polyfill@0.10.0):
+    resolution: {integrity: sha512-X0/Cku5jivdyk3dWu5DctY30y2zz40tHy6yf5dA9qAQ5CuDoZgZZQWMJyy0Fy5aLGLzf1rXZXK0Mo1XNDexG7g==}
     engines: {node: '>=18.16.0', pnpm: '>=8'}
     hasBin: true
     peerDependencies:
@@ -7457,6 +7457,6 @@ packages:
       jszip: 3.10.1
     dev: true
 
-  /zod@3.21.4:
-    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
+  /zod@3.22.0:
+    resolution: {integrity: sha512-y5KZY/ssf5n7hCGDGGtcJO/EBJEm5Pa+QQvFBeyMOtnFYOSflalxIFFvdaYevPhePcmcKC4aTbFkCcXN7D0O8Q==}
     dev: false
