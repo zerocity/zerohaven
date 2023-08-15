@@ -77,9 +77,10 @@ jobs:
 
       - name: Publish
         if: ${{ steps.release.outputs.release_created }}
-        uses: trmcnvn/firefox-addon@v1
+        uses: yayuyokitano/firefox-addon@v0.0.3-alpha
         with:
-          xpi: .output/zerohaven-${{steps.get-version.outputs.VERSION}}-firefox.zip
-          manifest: .output/firefox-mv2/manifest.json
-          api-key: ${{ secrets.FIREFOX_API_KEY }}
-          api-secret: ${{ secrets.FIREFOX_API_SECRET }}
+          guid: zerohaven@zerocity.sh
+          xpi_path: .output/zerohaven-${{steps.get-version.outputs.VERSION}}-firefox.zip
+          src_path: .output/zerohaven-${{steps.get-version.outputs.VERSION}}-sources.zip
+          api_key: ${{ secrets.FIREFOX_API_KEY }}
+          api_secret: ${{ secrets.FIREFOX_API_SECRET }}
