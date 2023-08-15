@@ -77,7 +77,7 @@ jobs:
 
       - name: Publish
         if: ${{ steps.release.outputs.release_created }}
-        uses: zerocity/firefox-addon@v0.0.1
+        uses: zerocity/firefox-addon@v0.0.2
         with:
           guid: zerohaven@zerocity.sh
           xpi_path: .output/zerohaven-${{steps.get-version.outputs.VERSION}}-firefox.zip
