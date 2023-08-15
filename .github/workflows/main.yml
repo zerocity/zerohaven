@@ -54,10 +54,11 @@ jobs:
         run: pnpm compile
 
       - name: Release
+        id: release
         uses: google-github-actions/release-please-action@v3
         with:
           release-type: node
-          package-name: release-please-action
+          package-name: zerohaven
 
       - name: Get version
         id: get-version
@@ -66,28 +67,19 @@ jobs:
       - name: Output path of artifact
         run: echo ".output/zerohaven-${{steps.get-version.outputs.VERSION}}-firefox.zip"
 
-      # - name: Release
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: npx semantic-release
+      - name: Build
+        if: ${{ steps.release.outputs.release_created }}
+        run: pnpm build:firefox
 
-      # - name: Get version
-      #   id: get-version
-      #   run: echo "VERSION=$(node --print 'require("./package.json").version' )" >> "$GITHUB_OUTPUT"
+      - name: zip
+        if: ${{ steps.release.outputs.release_created }}
+        run: pnpm zip:firefox
 
-      # - name: Output path of artifact
-      #   run: echo ".output/zerohaven-${{steps.get-version.outputs.VERSION}}-firefox.zip"
-
-      # - name: Build
-      #   run: pnpm build:firefox
-
-      # - name: zip
-      #   run: pnpm zip:firefox
-
-      # - name: Publish
-      #   uses: trmcnvn/firefox-addon@v1
-      #   with:
-      #     xpi: .output/zerohaven-${{steps.get-version.outputs.VERSION}}-firefox.zip
-      #     manifest: .output/firefox-mv2/manifest.json
-      #     api-key: ${{ secrets.FIREFOX_API_KEY }}
-      #     api-secret: ${{ secrets.FIREFOX_API_SECRET }}
+      - name: Publish
+        if: ${{ steps.release.outputs.release_created }}
+        uses: trmcnvn/firefox-addon@v1
+        with:
+          xpi: .output/zerohaven-${{steps.get-version.outputs.VERSION}}-firefox.zip
+          manifest: .output/firefox-mv2/manifest.json
+          api-key: ${{ secrets.FIREFOX_API_KEY }}
+          api-secret: ${{ secrets.FIREFOX_API_SECRET }}
