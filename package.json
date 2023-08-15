@@ -26,7 +26,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.15.0",
-    "zod": "^3.22.0"
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@semantic-release/git": "^10.0.1",
@@ -34,6 +34,6 @@
     "@types/react": "^18.2.20",
     "@vitejs/plugin-react": "^4.0.4",
     "typescript": "^5.1.6",
-    "wxt": "^0.3.2"
+    "wxt": "^0.3.1"
   }
 }
