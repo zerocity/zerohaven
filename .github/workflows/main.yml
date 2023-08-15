@@ -38,28 +38,30 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Typecheck
+        run: pnpm compile
+
       - name: Build
         run: pnpm build:firefox
 
       - name: zip
         run: pnpm zip:firefox
 
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get version
+        id: get-version
+        run: echo "VERSION=$(pnpm pkg get version)" >> "$GITHUB_OUTPUT"
+
       - name: Publish
         uses: trmcnvn/firefox-addon@v1
+        if: steps.changesets.outputs.hasChangesets == 'false'
         with:
-          xpi: .output/zerohaven-0.0.1-firefox.zip
+          xpi: .output/zerohaven-${{steps.get-version.outputs.VERSION}}-firefox.zip
           manifest: .output/firefox-mv2/manifest.json
           api-key: ${{ secrets.FIREFOX_API_KEY }}
           api-secret: ${{ secrets.FIREFOX_API_SECRET }}
-
-      - name: "Upload Artifact extension"
-        uses: actions/upload-artifact@v3
-        with:
-          name: zerohaven.xpi
-          path: .output/zerohaven-*-firefox.zip
-
-      - name: "Upload Artifact source"
-        uses: actions/upload-artifact@v3
-        with:
-          name: zerohaven-latest-sources.zip
-          path: .output/zerohaven-*-sources.zip
