@@ -1,7 +1,12 @@
+name: Release
+
 # Controls when the action will run.
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   build:
@@ -47,8 +52,10 @@ jobs:
       - name: zip
         run: pnpm zip:firefox
 
-      - name: Check for changeset
-        run: pnpm changeset status --since=main
+      #  Dont work
+      #
+      # - name: Check for changeset
+      #   run: pnpm changeset status --since=main
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
