@@ -14,7 +14,7 @@ export default defineConfig({
     description:
       "Replace new tab page with a personal dashboard. The background can be customized.",
     homepage_url: "https://www.zerocity.sh",
-    applications: {
+    browser_specific_settings: {
       gecko: {
         id: "zerohaven@zerocity.sh",
       },
