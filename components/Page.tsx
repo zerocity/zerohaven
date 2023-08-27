@@ -4,18 +4,23 @@ import {
   HStack,
   Spinner,
   Stack,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
-import { useLocation } from 'react-router-dom';
-import { PropsWithChildren } from 'react';
-import { FaImages, FaRegClock } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import Background from './Background';
-import { Footer } from './Footer';
+import { useLocation } from "react-router-dom";
+import { PropsWithChildren } from "react";
+import {
+  FaBackward,
+  FaChevronCircleLeft,
+  FaImages,
+  FaRegClock,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import Background from "./Background";
+import { Footer } from "./Footer";
 
 export enum ScreenMode {
-  DEFAULT = 'DEFAULT',
-  SETTING = 'SETTING',
+  DEFAULT = "DEFAULT",
+  SETTING = "SETTING",
 }
 export interface PageProps {
   renderHeader: React.ReactNode;
@@ -29,19 +34,19 @@ export function Page({
   isRoot,
   ...props
 }: PropsWithChildren<PageProps>) {
-  const bg = 'blackAlpha.600';
+  const bg = "blackAlpha.600";
 
   return (
     <>
       <HStack
-        position={'fixed'}
+        position={"fixed"}
         bg={bg}
         p={2}
-        h={'64px'}
-        zIndex={'docked'}
-        justify={'center'}
-        w={isRoot ? 'inherit' : 'full'}
-        right={isRoot ? '0' : 'inherit'}
+        h={"64px"}
+        zIndex={"docked"}
+        justify={"center"}
+        w={isRoot ? "inherit" : "full"}
+        right={isRoot ? "0" : "inherit"}
         borderBottomLeftRadius={isRoot ? 12 : 0}
         align="center"
         spacing={4}
@@ -50,12 +55,12 @@ export function Page({
         {loading && (
           <BaseLink
             _focus={{
-              boxShadow: 'inherit',
+              boxShadow: "inherit",
             }}
             p={4}
             color="white"
           >
-            <Spinner size={'sm'} speed="0.65s" color="white" />
+            <Spinner size={"sm"} speed="0.65s" color="white" />
           </BaseLink>
         )}
         {!isRoot && !loading && (
@@ -63,20 +68,20 @@ export function Page({
             as={Link}
             to="/"
             _focus={{
-              boxShadow: 'inherit',
+              boxShadow: "inherit",
             }}
             p={4}
             color="white"
           >
-            <FaRegClock />
+            <FaChevronCircleLeft />
           </BaseLink>
         )}
         {isRoot && !loading && (
           <BaseLink
-            to={'/settings'}
+            to={"/settings"}
             // href={'/settings'}
             _focus={{
-              boxShadow: 'inherit',
+              boxShadow: "inherit",
             }}
             p={4}
             color="white"

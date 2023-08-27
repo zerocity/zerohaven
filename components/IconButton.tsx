@@ -1,27 +1,32 @@
 import {
   IconButton as BaseIconButton,
   IconButtonProps,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 export const IconButton = (props: IconButtonProps) => (
-  //@ts-ignore
   <BaseIconButton
     size="md"
-    borderRadius={'full'}
+    borderRadius={"full"}
     fontSize="lg"
-    // variant="outline"
-    // color="whiteAlpha.600"
-    // borderColor="transparent"
+    variant="outline"
+    color="whiteAlpha.600"
+    borderColor="transparent"
     borderWidth={1}
     _active={{
-      color: 'white',
-      bg: 'blackAlpha.800',
-      // borderColor: "white",
-      // borderWidth: 2,
+      color: "white",
+      bg: "blackAlpha.800",
+    }}
+    _hover={{
+      color: "white",
+      bg: "blackAlpha.600",
+      borderColor: "white",
+      borderWidth: 1,
     }}
     _focus={{
-      color: 'blackAlpha.800',
-      boxShadow: 'transparent',
+      color: "whiteAlpha.600",
+      boxShadow: "transparent",
+      borderColor: "white",
+      borderWidth: 2,
     }}
     {...props}
   />

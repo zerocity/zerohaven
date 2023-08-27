@@ -19,7 +19,7 @@ export default defineConfig({
         id: "zerohaven@zerocity.sh",
       },
     },
-    permissions: ["*://wallhaven.cc/*", "tabs"],
+    permissions: ["*://wallhaven.cc/*", "*://*", "tabs"],
     icons: {
       "16": "icon/16.png",
       "32": "icon/32.png",

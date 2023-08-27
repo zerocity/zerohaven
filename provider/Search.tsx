@@ -1,8 +1,8 @@
-import { createContext } from '@chakra-ui/react-utils';
-import { PropsWithChildren, useEffect } from 'react';
-import useLocalStorage from '../hook/useLocalStorage';
-import { setFlag } from '../hook/utils';
-import { CallbacksFor, useMethods } from '../hook/use-method';
+import { createContext } from "@chakra-ui/react-utils";
+import { PropsWithChildren, useEffect } from "react";
+import useLocalStorage from "../hook/useLocalStorage";
+import { setFlag } from "../hook/utils";
+import { CallbacksFor, useMethods } from "../hook/use-method";
 
 export enum Purity {
   UNKNOWN = 0, // 000
@@ -33,15 +33,15 @@ interface SearchContext {
 }
 
 export const [SearchProvider, useSearchContext] = createContext<SearchContext>({
-  name: 'SearchContext',
+  name: "SearchContext",
   errorMessage:
-    'useSearchContext: `context` is undefined. Seems you forgot to wrap Search components in `<Search />`',
+    "useSearchContext: `context` is undefined. Seems you forgot to wrap Search components in `<Search />`",
 });
 
 const initialState: SearchState = {
-  q: 'dune',
+  q: "",
   purity: 1, // default of api 1
-  categories: 1, // default of api 7
+  categories: 7, // default of api 7
   apikey: undefined,
   page: 1,
 };
@@ -76,7 +76,7 @@ const methods = (state: SearchState) => ({
 export type Actions = CallbacksFor<typeof methods>;
 
 export function Search(props: PropsWithChildren<unknown>) {
-  const [apikey] = useLocalStorage('apikey', undefined);
+  const [apikey] = useLocalStorage("apikey", undefined);
   const [state, actions] = useMethods(methods, initialState);
 
   useEffect(() => {

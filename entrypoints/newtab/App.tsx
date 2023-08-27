@@ -1,5 +1,6 @@
 import { Page } from "@@/components/Page";
 import { Home } from "@@/pages";
+import { CollectionOfTabs } from "@@/provider/CollectionOfTabs.provider";
 import {
   ChakraProvider,
   ColorModeScript,
@@ -29,8 +30,9 @@ const queryClient = new QueryClient({
   },
 });
 
-function ErrorPage() {
+function ErrorPage(...props: unknown[]) {
   const error = useRouteError();
+  console.error(props);
   console.error(error);
   return (
     <Page isRoot={true} renderHeader={null}>
@@ -43,6 +45,7 @@ function ErrorPage() {
         <Text as="h1">Oops!</Text>
         <Text>Sorry, an unexpected error has occurred.</Text>
         <Text as="pre">{JSON.stringify(error, null, 2)}</Text>
+        <Text as="pre">{JSON.stringify(props, null, 2)}</Text>
       </VStack>
     </Page>
   );
@@ -50,7 +53,7 @@ function ErrorPage() {
 
 const router = createMemoryRouter(
   createRoutesFromElements(
-    <Route errorElement={<ErrorPage />}>
+    <Route element={<CollectionOfTabs />} errorElement={<ErrorPage />}>
       <Route index element={<Home />} />
       <Route path="newtab.html" element={<Home />} />
       <Route lazy={() => import("../../pages/settings")} path="/settings" />

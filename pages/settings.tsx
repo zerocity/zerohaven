@@ -10,28 +10,32 @@ import {
   Text,
   useDisclosure,
   UseDisclosureReturn,
-} from '@chakra-ui/react';
-import { isEmpty } from 'lodash';
+} from "@chakra-ui/react";
+import { isEmpty } from "lodash";
 
-import * as React from 'react';
-import { BsFilter } from 'react-icons/bs';
-import { useImage } from '../hook/useImage';
-import { hasFlag, toFlipMask } from '../hook/utils';
+import * as React from "react";
+import { BsFilter } from "react-icons/bs";
+import { useImage } from "../hook/useImage";
+import { hasFlag, toFlipMask } from "../hook/utils";
 import {
   Categories,
   Purity,
   Search,
   useSearchContext,
-} from '../provider/Search';
-import { isRouteErrorResponse, useLocation, useRouteError } from 'react-router-dom';
-import { useGetImages } from '@@/components/query/use-get-images';
-import { SearchInput } from '@@/components/SearchInput';
-import { Page } from '@@/components/Page';
-import { WallpaperSearchResults } from '@@/components/WallpaperSearchResults';
+} from "../provider/Search";
+import {
+  isRouteErrorResponse,
+  useLocation,
+  useRouteError,
+} from "react-router-dom";
+import { useGetImages } from "@@/components/query/use-get-images";
+import { SearchInput } from "@@/components/SearchInput";
+import { Page } from "@@/components/Page";
+import { WallpaperSearchResults } from "@@/components/WallpaperSearchResults";
 
 export const Setting = () => {
   const router = useLocation();
-  const isRoot = router.pathname === '/' || router.pathname === '/index.html';
+  const isRoot = router.pathname === "/" || router.pathname === "/index.html";
 
   const [_, setImage] = useImage();
   const toggle = useDisclosure({ defaultIsOpen: true });
@@ -47,13 +51,13 @@ export const Setting = () => {
   });
 
   const header = (
-    <HStack w="100%" align={'center'}>
+    <HStack w="100%" align={"center"}>
       <IconButton
-        variant={'ghost'}
+        variant={"ghost"}
         color="white"
         _hover={{
-          bg: 'white',
-          color: 'black',
+          bg: "white",
+          color: "black",
           p: 2,
         }}
         onClick={toggle.onToggle}
@@ -64,7 +68,7 @@ export const Setting = () => {
         defaultValue={search.state.q}
         color="white"
         bg="blackAlpha.600"
-        zIndex={'banner'}
+        zIndex={"banner"}
         onDebounce={(q: string) => {
           if (q) {
             search.actions.setQ(q);
@@ -79,21 +83,22 @@ export const Setting = () => {
       <Page isRoot={isRoot} renderHeader={header}>
         <Flex flex={1}>
           <FilterNavigation toggle={toggle} />
-          <Flex flex={1} h="100vh" justify={'center'} align={'center'}>
+          <Flex flex={1} h="100vh" justify={"center"} align={"center"}>
             <Box p={12} borderRadius="md" bg="blackAlpha.600">
-              <Spinner color="white" size={'xl'} />
+              <Spinner color="white" size={"xl"} />
             </Box>
           </Flex>
         </Flex>
       </Page>
     );
   }
+
   if (fetchedImages.isError) {
     return (
       <Page isRoot={isRoot} renderHeader={header}>
         <Flex flex={1}>
           <FilterNavigation toggle={toggle} />
-          <Flex flex={1} h="100vh" justify={'center'} align={'center'}>
+          <Flex flex={1} h="100vh" justify={"center"} align={"center"}>
             <Box p={12} borderRadius="md" bg="blackAlpha.600">
               <Text color="white">{`Something bad happend :(`} </Text>
             </Box>
@@ -108,7 +113,7 @@ export const Setting = () => {
       <Page isRoot={isRoot} renderHeader={header}>
         <Flex flex={1}>
           <FilterNavigation toggle={toggle} />
-          <Flex flex={1} h="100vh" justify={'center'} align={'center'}>
+          <Flex flex={1} h="100vh" justify={"center"} align={"center"}>
             <Box p={12} borderRadius="md" bg="blackAlpha.600">
               <Text color="white">{`Nothing found :(`} </Text>
             </Box>
@@ -141,13 +146,13 @@ function FilterNavigation(props: FilterNavigation) {
   if (!props.toggle.isOpen) return null;
   return (
     <Stack
-      position={['absolute', 'inherit']}
+      position={["absolute", "inherit"]}
       zIndex="banner"
       p={2}
-      mt={'64px'}
-      w={['full', '200px']}
+      mt={"64px"}
+      w={["full", "200px"]}
       bg="blackAlpha.600"
-      flexDir={'column'}
+      flexDir={"column"}
     >
       <ButtonGroup size="sm" isAttached>
         <Button
